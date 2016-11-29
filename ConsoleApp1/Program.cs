@@ -1,23 +1,15 @@
-﻿namespace Ls1
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
 {
-    class Ls1cmd
+    class Program
     {
-
-        static void Main()
+        static void Main(string[] args)
         {
-            System.Console.ForegroundColor = System.ConsoleColor.Green;
-            for (int j = 0; j < 500; j++)
-            {
-                for (int i = 0; i < 5000; i++)
-                {
-                    System.Console.Write(i);
-                    System.Threading.Thread.Sleep(1);
-                }
-                //System.Console.Clear();
-            }
-            System.Console.Read();
-
         }
     }
 }
-
