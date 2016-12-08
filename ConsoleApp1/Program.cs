@@ -1,20 +1,29 @@
 ﻿using System;
-class Program
+
+class Building
+{
+    public int Floors;
+    public int Area;
+    public int Occupants;
+}
+
+class BuildingDemo
 {
     static void Main()
     {
-        Console.WriteLine("Type testimony of counter with a fractional part here: ");
-        var nt = Console.ReadLine();
-        try
-        {
-            Convert.ToDouble(nt);
-            Console.WriteLine("Var was initialize that {0}", nt.GetType());
-            Console.WriteLine("{0:#.###} this is your testimory!", Convert.ToDouble(nt));
-            Console.WriteLine("Price: 61.52 грн\\м.куб");
-            Console.WriteLine("Total price: {0}", Convert.ToDouble(nt)*61.52);
+        Building house1 = new Building();
+        int AreaPP;
 
-        }
-        catch { Console.WriteLine("Type only double!"); }        
+        house1.Occupants = 4;
+        house1.Area = 2500;
+        house1.Floors = 2;
+
+        AreaPP = house1.Area / house1.Occupants;
+        Console.WriteLine("Дом имеет:\n " +
+                          house1.Floors +  " этажа\n " +
+                          house1.Occupants + " жильца\n " +
+                          house1.Area + " кв.метров общей площади, из них\n " +
+                          AreaPP + " приходиться на одного человека.");                
         Console.Read();
     }
 }
