@@ -1,65 +1,54 @@
 ﻿using System;
 
-class Building
+class Destruct
 {
-    public Building (int f, int a, int o)
+    private int x;
+
+    public Destruct(int x)
     {
-        Floors = f;
-        Area = a;
-        Occupants = o;
+        this.X = x;
     }
 
-    public int Floors;
-    public int Area;
-    public int Occupants;
-
-    public int AreaPerPerson()
+    ~Destruct()
     {
-        return Area / Occupants;
+        Console.WriteLine("Визов деструктора для обьекта №" + this.X);
     }
 
-    public int MaxOccupants(int minArea)
+    public int X
     {
-        return Area / minArea;
-    }
-}
-
-class BuildingDemoMethods
-{
-    static void Main()
-    {
-        Building house1 = new Building(2,2500,4);
-        Building office1 = new Building(3,4200,25);
-
-        Console.WriteLine();
-        Console.WriteLine(" Дом имеет:\n " +
-                          house1.Floors + "  этажа\n " +
-                          house1.Occupants + "  жильца\n " +
-                          house1.Area + "  кв.метров общей площади, из них\n " +
-                          house1.AreaPerPerson() + " приходиться на одного человека.");
-        Console.WriteLine();
-
-        Console.WriteLine(" Учреждение имеет:\n " +
-                          office1.Floors + "  этажа\n " +
-                          office1.Occupants + "  жильца\n " +
-                          office1.Area + "  кв.метров общей площади, из них\n " +
-                          office1.AreaPerPerson() + " приходиться на одного человека.");;
-        Console.WriteLine();
-
-        if ( house1.AreaPerPerson() > office1.AreaPerPerson() )
+        get
         {
-            Console.WriteLine(" В доме больше места на каждого жильца чем в офисе.");
+            return x;
         }
-        else Console.WriteLine(" В офисе больше места на каждого жильца чем в доме.");
-        Console.WriteLine();
 
-        Console.WriteLine(" При условии что минимум на одного человека 100 кв.м, количество свободних мест:");
-        Console.WriteLine(" в доме - " + (house1.MaxOccupants(100)-house1.Occupants) );
-        Console.WriteLine(" в офисе - " + (office1.MaxOccupants(100) - office1.Occupants));
-        Console.Read();
+        set
+        {
+            x = value;
+        }
+    }
 
+    public static void Create (int i)
+    {
+        Destruct o = new Destruct(i);        
     }
 }
+
+class Demo
+{
+    public static void Main()
+    {
+        for (int i = 0; i < 1000000; i++)
+        {
+            Destruct.Create(i);
+            System.Threading.Tasks.Task.Delay(200000); 
+        }
+    Console.Read();
+    }
+}
+
+
+
+
 
 
 
